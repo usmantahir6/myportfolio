@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Usman Tahir — QA Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;
+  --bg2:#f7f6f3;
+  --bg3:#eeecea;
+  --text:#1a1a1a;
+  --muted:#6b6860;
+  --accent:#0d6e4e;
+  --accent2:#e8f5f0;
+  --border:#e2e0db;
+  --card:#ffffff;
+  --serif:'DM Serif Display',serif;
+  --sans:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-family:var(--serif);font-size:1.2rem;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.875rem;color:var(--muted);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#fff;padding:.45rem 1.1rem;border-radius:6px;font-size:.875rem;font-weight:500;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:var(--bg);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-120px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,#e8f5f0 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-60px;left:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,#f0f9f5 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent2);color:var(--accent);font-size:.8rem;font-weight:600;padding:.3rem .9rem;border-radius:100px;margin-bottom:1.5rem;letter-spacing:.04em;text-transform:uppercase}
+.hero-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent)}
+h1{font-family:var(--serif);font-size:3.6rem;line-height:1.1;color:var(--text);margin-bottom:1.2rem}
+h1 em{color:var(--accent);font-style:italic}
+.hero-desc{font-size:1.05rem;color:var(--muted);max-width:440px;margin-bottom:2rem;line-height:1.75}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;border-radius:8px;font-size:.9rem;font-weight:500;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{opacity:.87;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:2.5rem}
+.stat{background:var(--bg);padding:1.2rem 1rem;text-align:center}
+.stat-num{font-family:var(--serif);font-size:2rem;color:var(--accent)}
+.stat-label{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+.hero-visual{display:flex;flex-direction:column;gap:1rem}
+.card-float{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.4rem;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.card-float-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem}
+.card-float-title{font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.badge{font-size:.7rem;font-weight:600;padding:.25rem .6rem;border-radius:100px}
+.badge-green{background:#dcf5eb;color:#0a6640}
+.badge-red{background:#fde8e8;color:#b42a2a}
+.badge-yellow{background:#fdf3db;color:#8a6000}
+.bug-list{display:flex;flex-direction:column;gap:.55rem}
+.bug-item{display:flex;align-items:center;gap:.7rem;font-size:.82rem;color:var(--text)}
+.bug-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.bug-dot.critical{background:#e53e3e}
+.bug-dot.major{background:#dd6b20}
+.bug-dot.minor{background:#38a169}
+.progress-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden;margin-top:.3rem}
+.progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width 1s ease}
+.tool-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
+.pill{font-size:.75rem;background:var(--bg2);color:var(--muted);padding:.3rem .75rem;border-radius:100px;font-weight:500}
+
+/* SECTIONS */
+section{padding:90px 5%}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:.6rem}
+.section-title{font-family:var(--serif);font-size:2.5rem;color:var(--text);margin-bottom:1rem;line-height:1.2}
+.section-sub{font-size:1rem;color:var(--muted);max-width:520px;line-height:1.75}
+.section-head{margin-bottom:3rem}
+
+/* SKILLS */
+.skills-bg{background:var(--bg2)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:transform .2s,box-shadow .2s}
+.skill-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.skill-icon{width:42px;height:42px;border-radius:10px;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem}
+.skill-card h3{font-size:1rem;font-weight:600;margin-bottom:.8rem}
+.skill-items{display:flex;flex-wrap:wrap;gap:.4rem}
+.skill-tag{font-size:.75rem;background:var(--bg2);color:var(--muted);padding:.25rem .65rem;border-radius:6px;font-weight:500}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.8rem}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.project-card:hover::before{transform:scaleX(1)}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.09)}
+.project-num{font-family:var(--serif);font-size:3rem;color:var(--bg3);position:absolute;top:1rem;right:1.5rem;line-height:1}
+.project-type{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.6rem}
+.project-card h3{font-size:1.15rem;font-weight:600;margin-bottom:.7rem;line-height:1.3}
+.project-card p{font-size:.875rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem}
+.project-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem}
+.project-link{font-size:.82rem;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem}
+.project-link:hover{text-decoration:underline}
+
+/* EXPERIENCE */
+.exp-bg{background:var(--bg2)}
+.exp-timeline{display:flex;flex-direction:column;gap:0}
+.exp-item{display:grid;grid-template-columns:180px 1fr;gap:2rem;position:relative;padding-bottom:2.5rem}
+.exp-item:last-child{padding-bottom:0}
+.exp-item::after{content:'';position:absolute;left:179px;top:8px;bottom:0;width:1px;background:var(--border)}
+.exp-item:last-child::after{display:none}
+.exp-date{font-size:.8rem;color:var(--muted);font-weight:500;padding-top:.1rem;text-align:right;padding-right:1.5rem;position:relative}
+.exp-date::after{content:'';position:absolute;right:-5px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg2)}
+.exp-content{padding-left:1.5rem}
+.exp-role{font-size:1.05rem;font-weight:600;margin-bottom:.2rem}
+.exp-company{font-size:.875rem;color:var(--accent);font-weight:500;margin-bottom:.7rem}
+.exp-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.exp-list li{font-size:.875rem;color:var(--muted);padding-left:1rem;position:relative;line-height:1.6}
+.exp-list li::before{content:'→';position:absolute;left:0;color:var(--accent)}
+
+/* CERTIFICATIONS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.3rem 1.5rem;display:flex;align-items:center;gap:1rem;transition:transform .2s,box-shadow .2s}
+.cert-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.07)}
+.cert-icon{width:44px;height:44px;border-radius:10px;background:var(--accent2);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.cert-name{font-size:.9rem;font-weight:600;line-height:1.3}
+.cert-issuer{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+
+/* CONTACT */
+.contact-bg{background:var(--text)}
+.contact-bg .section-label{color:#6ee7c0}
+.contact-bg .section-title{color:#fff}
+.contact-bg .section-sub{color:#a0a0a0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-links{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.contact-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;border-radius:10px;border:1px solid #2e2e2e;color:#e0e0e0;text-decoration:none;font-size:.9rem;transition:all .2s;background:#1e1e1e}
+.contact-link:hover{border-color:#0d6e4e;color:#6ee7c0;background:#1a2a23}
+.contact-link-icon{font-size:1.1rem;width:30px;text-align:center}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem}
+.form-label{font-size:.8rem;font-weight:500;color:#a0a0a0}
+.form-input{background:#1e1e1e;border:1px solid #2e2e2e;border-radius:8px;padding:.75rem 1rem;font-family:var(--sans);font-size:.9rem;color:#fff;outline:none;transition:border-color .2s}
+.form-input:focus{border-color:#0d6e4e}
+.form-input::placeholder{color:#555}
+textarea.form-input{resize:vertical;min-height:100px}
+.btn-send{background:var(--accent);color:#fff;border:none;padding:.8rem 1.8rem;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;transition:opacity .2s;font-family:var(--sans);align-self:flex-start}
+.btn-send:hover{opacity:.85}
+
+/* FOOTER */
+footer{background:#111;padding:1.5rem 5%;text-align:center}
+footer p{font-size:.8rem;color:#555}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  h1{font-size:2.6rem}
+  .exp-item{grid-template-columns:1fr}
+  .exp-item::after{display:none}
+  .exp-date{text-align:left;padding-right:0;padding-left:0}
+  .exp-date::after{display:none}
+  .exp-content{padding-left:0}
+  .contact-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Usman<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#testdocs">Test Docs</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Available for opportunities</div>
+      <h1>Usman Tahir<br/><em>QA Engineer</em></h1>
+      <p class="hero-desc">Ensuring software quality through rigorous manual and automated testing. I find bugs before your users do — turning complex systems into reliable, user-ready products.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="#projects">View My Work</a>
+        <a class="btn btn-outline" href="#contact">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Bugs Reported</div></div>
+        <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Projects Tested</div></div>
+        <div class="stat"><div class="stat-num">95%</div><div class="stat-label">Test Coverage</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Bug Report Card -->
+      <div class="card-float">
+        <div class="card-float-header">
+          <span class="card-float-title">Bug Report · BUG-0142</span>
+          <span class="badge badge-red">Critical</span>
+        </div>
+        <div class="bug-list">
+          <div class="bug-item"><div class="bug-dot critical"></div>Login fails with valid credentials on mobile</div>
+          <div class="bug-item"><div class="bug-dot major"></div>Cart total miscalculates on discount apply</div>
+          <div class="bug-item"><div class="bug-dot minor"></div>Tooltip misaligned on Firefox v120</div>
+        </div>
+      </div>
+      <!-- Test Coverage Card -->
+      <div class="card-float">
+        <div class="card-float-header">
+          <span class="card-float-title">Test Coverage</span>
+          <span class="badge badge-green">Passing 94%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.6rem">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.3rem"><span>API Tests</span><span style="color:var(--accent);font-weight:600">98%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:98%"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.3rem"><span>UI Regression</span><span style="color:var(--accent);font-weight:600">91%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:91%"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.3rem"><span>Performance</span><span style="color:var(--accent);font-weight:600">88%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
+          </div>
+        </div>
+      </div>
+      <!-- Tools Card -->
+      <div class="card-float">
+        <div class="card-float-header">
+          <span class="card-float-title">Tools I Use</span>
+        </div>
+        <div class="tool-pills">
+          <span class="pill">Postman</span><span class="pill">JIRA</span><span class="pill">ClickUp</span><span class="pill">Manual Testing</span><span class="pill">Bug Reporting</span><span class="pill">Test Planning</span><span class="pill">Exploratory</span><span class="pill">Loom</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-bg">
+  <div class="section-inner">
+    <div class="section-head fade-up">
+      <div class="section-label">What I Know</div>
+      <h2 class="section-title">Skills & Expertise</h2>
+      <p class="section-sub">A comprehensive toolkit built across manual testing, test automation, and quality processes.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card fade-up">
+        <div class="skill-icon">🧪</div>
+        <h3>Manual Testing</h3>
+        <div class="skill-items">
+          <span class="skill-tag">Functional Testing</span>
+          <span class="skill-tag">Regression Testing</span>
+          <span class="skill-tag">Exploratory Testing</span>
+          <span class="skill-tag">Smoke & Sanity</span>
+          <span class="skill-tag">UAT</span>
+          <span class="skill-tag">Cross-browser Testing</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon">🤖</div>
+        <h3>Test Automation</h3>
+        <div class="skill-items">
+          <span class="skill-tag">Selenium WebDriver</span>
+          <span class="skill-tag">Cypress</span>
+          <span class="skill-tag">Playwright</span>
+          <span class="skill-tag">TestNG</span>
+          <span class="skill-tag">PyTest</span>
+          <span class="skill-tag">POM Framework</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon">🔗</div>
+        <h3>API Testing</h3>
+        <div class="skill-items">
+          <span class="skill-tag">Postman</span>
+          <span class="skill-tag">REST Assured</span>
+          <span class="skill-tag">REST & SOAP</span>
+          <span class="skill-tag">JSON/XML</span>
+          <span class="skill-tag">Newman</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon">⚡</div>
+        <h3>Performance Testing</h3>
+        <div class="skill-items">
+          <span class="skill-tag">JMeter</span>
+          <span class="skill-tag">Load Testing</span>
+          <span class="skill-tag">Stress Testing</span>
+          <span class="skill-tag">Spike Testing</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon">🛠</div>
+        <h3>Tools & Project Management</h3>
+        <div class="skill-items">
+          <span class="skill-tag">JIRA</span>
+          <span class="skill-tag">ClickUp</span>
+          <span class="skill-tag">Git & GitHub</span>
+          <span class="skill-tag">Loom</span>
+          <span class="skill-tag">Google Docs</span>
+          <span class="skill-tag">Postman</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon">💻</div>
+        <h3>Programming</h3>
+        <div class="skill-items">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Bash</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-head fade-up">
+      <div class="section-label">My Work</div>
+      <h2 class="section-title">Projects & Test Work</h2>
+      <p class="section-sub">Real testing work — from automation frameworks to comprehensive bug reports and test plans.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card fade-up">
+        <div class="project-num">01</div>
+        <div class="project-type">Manual Testing · Travel & Hospitality</div>
+        <h3>StayGo Hotel Portal — End-to-End QA</h3>
+        <p>Tested the full booking lifecycle of a hotel & group event platform. Uncovered a critical payment bug where 25% deposit selection incorrectly charged 100% of the amount (THB 25,000 instead of THB 6,250), plus financial miscalculations in the Admin booking breakdown view.</p>
+        <div class="project-tags">
+          <span class="pill">Manual Testing</span><span class="pill">Payment Flow</span><span class="pill">Exploratory</span><span class="pill">Bug Reporting</span><span class="pill">Mobile Responsiveness</span>
+        </div>
+        <div style="display:flex;gap:.6rem;align-items:center;margin-top:.5rem;flex-wrap:wrap">
+          <span style="font-size:.75rem;background:#fde8e8;color:#b42a2a;padding:.2rem .6rem;border-radius:100px;font-weight:600">1 Critical</span>
+          <span style="font-size:.75rem;background:#fdf3db;color:#8a6000;padding:.2rem .6rem;border-radius:100px;font-weight:600">2 High</span>
+          <span style="font-size:.75rem;background:#e8f0fe;color:#1a56db;padding:.2rem .6rem;border-radius:100px;font-weight:600">1 Medium</span>
+        </div>
+        <a class="project-link" href="https://github.com/usmantahir6/staygo-qa-testing" target="_blank" style="margin-top:.8rem;display:inline-flex">View Bug Reports on GitHub →</a>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-num">02</div>
+        <div class="project-type">Manual Testing · HR & Payroll</div>
+        <h3>DEVOX HRIS — Payroll & Attendance QA</h3>
+        <p>Comprehensive testing of a Human Resource Information System covering payroll calculation, geofencing-based attendance, salary slip accuracy, and employee lifecycle management. Found a critical security bug where deleted and inactive employees could still log into the system.</p>
+        <div class="project-tags">
+          <span class="pill">Manual Testing</span><span class="pill">Payroll Logic</span><span class="pill">Security Testing</span><span class="pill">Negative Testing</span><span class="pill">Geofencing</span>
+        </div>
+        <div style="display:flex;gap:.6rem;align-items:center;margin-top:.5rem;flex-wrap:wrap">
+          <span style="font-size:.75rem;background:#fde8e8;color:#b42a2a;padding:.2rem .6rem;border-radius:100px;font-weight:600">1 Critical</span>
+          <span style="font-size:.75rem;background:#fdf3db;color:#8a6000;padding:.2rem .6rem;border-radius:100px;font-weight:600">4 High</span>
+          <span style="font-size:.75rem;background:#e8f0fe;color:#1a56db;padding:.2rem .6rem;border-radius:100px;font-weight:600">2 Medium</span>
+        </div>
+        <a class="project-link" href="https://github.com/usmantahir6/devox-hris-qa-testing" target="_blank" style="margin-top:.8rem;display:inline-flex">View Bug Reports on GitHub →</a>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-num">03</div>
+        <div class="project-type">Payment & Financial Testing</div>
+        <h3>StayGo — Payment Flow Deep Dive</h3>
+        <p>In-depth negative testing of the partial payment (25% deposit) feature. Documented exact reproduction steps, expected vs actual results, and attached Loom video evidence. Covered both user-facing payment and admin-side financial breakdown accuracy.</p>
+        <div class="project-tags">
+          <span class="pill">Negative Testing</span><span class="pill">Payment Gateway</span><span class="pill">Financial Logic</span><span class="pill">Loom Evidence</span>
+        </div>
+        <a class="project-link" href="https://www.loom.com/share/faf0300c8c40417e8d8f183f824c6b4b" target="_blank" style="margin-top:.8rem;display:inline-flex">Watch Bug Video →</a>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-num">04</div>
+        <div class="project-type">Security & Access Control Testing</div>
+        <h3>DEVOX HRIS — Authentication Security Bugs</h3>
+        <p>Discovered that both inactive and deleted employees retained full login access — a critical security vulnerability. Tested two complete scenarios with step-by-step reproduction and documented expected authentication error messages for dev team.</p>
+        <div class="project-tags">
+          <span class="pill">Security Testing</span><span class="pill">Authentication</span><span class="pill">Access Control</span><span class="pill">Negative Testing</span>
+        </div>
+        <a class="project-link" href="https://github.com/usmantahir6/devox-hris-qa-testing" target="_blank" style="margin-top:.8rem;display:inline-flex">View on GitHub →</a>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-num">05</div>
+        <div class="project-type">Payroll Logic Testing</div>
+        <h3>DEVOX — Payroll Calculation Accuracy Testing</h3>
+        <p>Executed negative test scenarios on part-time hourly payroll where undefined project rates caused hour count mismatches. Also identified missing hours data on salary slips, making payroll unverifiable for employees and admins.</p>
+        <div class="project-tags">
+          <span class="pill">Payroll Testing</span><span class="pill">Data Validation</span><span class="pill">Negative Testing</span><span class="pill">Salary Slip</span>
+        </div>
+        <a class="project-link" href="https://github.com/usmantahir6/devox-hris-qa-testing" target="_blank" style="margin-top:.8rem;display:inline-flex">View on GitHub →</a>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-num">06</div>
+        <div class="project-type">Attendance & UI Testing</div>
+        <h3>DEVOX — Attendance & StayGo Mobile Responsiveness</h3>
+        <p>Identified geofencing failure causing office check-ins to be flagged as remote work. Also found auto check-out not triggering at 5 AM, leaving attendance records blank. Separately documented mobile UI layout issues on StayGo's Super Admin dashboard.</p>
+        <div class="project-tags">
+          <span class="pill">Geofencing</span><span class="pill">Attendance Logic</span><span class="pill">Mobile UI</span><span class="pill">Loom Evidence</span>
+        </div>
+        <a class="project-link" href="https://www.loom.com/share/c1216df78c7d453184e96ac550cd0417" target="_blank" style="margin-top:.8rem;display:inline-flex">Watch Bug Video →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEST DOCUMENTATION -->
+<section id="testdocs" style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="section-head fade-up">
+      <div class="section-label">Documentation</div>
+      <h2 class="section-title">Test Plans & Test Cases</h2>
+      <p class="section-sub">Professional test documentation written for real client projects — covering objectives, scope, test cases, and defect tracking.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.8rem">
+
+      <!-- Doc 1 -->
+      <div class="fade-up" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem">
+          <div style="width:48px;height:48px;border-radius:12px;background:#e8f0fe;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">📋</div>
+          <div>
+            <div style="font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.2rem">Test Cases · DEVOX HRIS</div>
+            <div style="font-size:1rem;font-weight:600;line-height:1.3">DEVOX HRIS — Payroll & Attendance Test Cases</div>
+          </div>
+        </div>
+        <p style="font-size:.875rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem">Detailed test cases for the DEVOX HR & Payroll system. Covers payroll calculation, geofencing-based attendance check-in, salary slip accuracy, employee lifecycle management, and authentication security flows.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem">
+          <span class="pill">Test Cases</span><span class="pill">JIRA</span><span class="pill">ClickUp</span><span class="pill">Manual Testing</span>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="https://docs.google.com/document/d/1uOJBJvnj3j4GeKSj12So5ouYxG5OZmRZsIgrjaCdPWk/edit?tab=t.a71483g7jz88" target="_blank" style="font-size:.82rem;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem">View Test Cases →</a>
+        </div>
+      </div>
+
+      <!-- Doc 2 -->
+      <div class="fade-up" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem">
+          <div style="width:48px;height:48px;border-radius:12px;background:#e8f5f0;display:flex;align-items:center;justify-content:circle;font-size:1.4rem;flex-shrink:0;justify-content:center">🧾</div>
+          <div>
+            <div style="font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.2rem">Test Plan · JAI THAI / StayGo</div>
+            <div style="font-size:1rem;font-weight:600;line-height:1.3">Tour Operator Dashboard — QA Test Plan</div>
+          </div>
+        </div>
+        <p style="font-size:.875rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem">QA Test Plan for the JAI THAI Tour Operator Dashboard — validating replacement of hotel-based logic with tour/operator functionality. Covers access control, data behavior, functional integrity, and regression testing across all modules.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem">
+          <span class="pill">Test Plan</span><span class="pill">Tour Operator</span><span class="pill">Access Control</span><span class="pill">Regression</span>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="https://docs.google.com/document/d/1ZiDkO0ciiPg-3q0LQTvCVp_9FrHTMhGuuTcg6Vw7NR0/edit?tab=t.c8p749ekjcph#heading=h.1xeh28tr77b0" target="_blank" style="font-size:.82rem;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem">View Test Plan →</a>
+        </div>
+      </div>
+
+      <!-- Summary Card -->
+      <div class="fade-up" style="background:var(--accent);border-radius:16px;padding:2rem;color:#fff">
+        <div style="font-size:1.5rem;margin-bottom:1rem">📊</div>
+        <div style="font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#6ee7c0;margin-bottom:.5rem">Documentation Stats</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
+          <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:1rem;text-align:center">
+            <div style="font-family:var(--serif);font-size:2rem;color:#fff">2</div>
+            <div style="font-size:.75rem;color:rgba(255,255,255,.7);margin-top:.2rem">Test Plans Written</div>
+          </div>
+          <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:1rem;text-align:center">
+            <div style="font-family:var(--serif);font-size:2rem;color:#fff">11</div>
+            <div style="font-size:.75rem;color:rgba(255,255,255,.7);margin-top:.2rem">Bugs Documented</div>
+          </div>
+          <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:1rem;text-align:center">
+            <div style="font-family:var(--serif);font-size:2rem;color:#fff">2</div>
+            <div style="font-size:.75rem;color:rgba(255,255,255,.7);margin-top:.2rem">Tools Used</div>
+          </div>
+          <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:1rem;text-align:center">
+            <div style="font-family:var(--serif);font-size:2rem;color:#fff">2</div>
+            <div style="font-size:.75rem;color:rgba(255,255,255,.7);margin-top:.2rem">Live Projects Tested</div>
+          </div>
+        </div>
+        <div style="margin-top:1.2rem;font-size:.8rem;color:rgba(255,255,255,.65)">Tools: JIRA · ClickUp · Google Docs · Loom</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="exp-bg">
+  <div class="section-inner">
+    <div class="section-head fade-up">
+      <div class="section-label">Career</div>
+      <h2 class="section-title">Work Experience</h2>
+      <p class="section-sub">Professional experience ensuring software quality across diverse industries and tech stacks.</p>
+    </div>
+    <div class="exp-timeline">
+      <div class="exp-item fade-up">
+        <div class="exp-date">April 2024 — Present</div>
+        <div class="exp-content">
+          <div class="exp-role">QA Engineer</div>
+          <div class="exp-company">Devox Technologies · Full-time</div>
+          <ul class="exp-list">
+            <li>Designed and executed 300+ test cases, test plans, and test scenarios across functional, regression, integration, and UAT cycles for multiple production web applications</li>
+            <li>Reduced post-release defect leakage by an estimated 35% by enforcing structured Smoke, Sanity, and Regression cycles aligned to STLC entry/exit criteria</li>
+            <li>Logged, triaged, and tracked defects in JIRA and ClickUp with detailed reproduction steps, screenshots, console logs, and clear severity/priority classification, accelerating developer turnaround</li>
+            <li>Validated REST APIs using Postman and Swagger across 50+ endpoints — covering authentication, CRUD operations, error handling, and edge cases — verifying status codes, JSON schemas, headers, and response times</li>
+            <li>Built and maintained Cypress automation scripts for end-to-end coverage of critical user flows including login, checkout, and search, increasing regression test efficiency</li>
+            <li>Collaborated with developers, product managers, and designers in Agile/Scrum ceremonies (daily stand-ups, sprint planning, refinement, retrospectives) to translate requirements into precise, testable acceptance criteria</li>
+            <li>Performed cross-browser and cross-device testing (Chrome, Firefox, Safari, Edge; desktop and mobile viewports) to ensure consistent UX</li>
+            <li>Supported non-functional testing including performance spot-checks, basic load observations, and usability reviews against WCAG-aware standards</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-inner">
+    <div class="section-head fade-up">
+      <div class="section-label">Credentials</div>
+      <h2 class="section-title">Certifications & Education</h2>
+      <p class="section-sub">Continuous learning through recognized certifications in software quality and testing.</p>
+    </div>
+    <div class="certs-grid fade-up">
+      <div class="cert-card">
+        <div class="cert-icon">📈</div>
+        <div><div class="cert-name">Digital Marketing</div><div class="cert-issuer">IDM Pakistan</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🤖</div>
+        <div><div class="cert-name">Software Testing Using Cypress</div><div class="cert-issuer">Cursa</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-bg">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Let's Work Together</h2>
+        <p class="section-sub">Open to full-time roles, contract projects, and freelance QA work. Let's talk about how I can help your team ship quality software.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:usman.tahir6@gmail.com">
+            <span class="contact-link-icon">✉</span> usman.tahir6@gmail.com
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/usman-tahir6/" target="_blank">
+            <span class="contact-link-icon">in</span> linkedin.com/in/usman-tahir6
+          </a>
+          <a class="contact-link" href="https://github.com/usmantahir6" target="_blank">
+            <span class="contact-link-icon">⌥</span> github.com/usmantahir6
+          </a>
+          <a class="contact-link" href="resume-usman-tahir.pdf" download>
+            <span class="contact-link-icon">↓</span> Download Resume
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input class="form-input" type="text" placeholder="John Smith"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" placeholder="john@company.com"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-input" placeholder="Tell me about the role or project..."></textarea>
+          </div>
+          <button class="btn-send" onclick="alert('Message sent! Usman will get back to you soon.')">Send Message →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Usman Tahir · QA Engineer · Built with care, deployed on Vercel</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
