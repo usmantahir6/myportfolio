@@ -134,7 +134,7 @@ section{padding:90px 5%}
 .contact-bg .section-label{color:#6ee7c0}
 .contact-bg .section-title{color:#fff}
 .contact-bg .section-sub{color:#a0a0a0}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:4rem;align-items:start;max-width:600px}
 .contact-links{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
 .contact-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;border-radius:10px;border:1px solid #2e2e2e;color:#e0e0e0;text-decoration:none;font-size:.9rem;transition:all .2s;background:#1e1e1e}
 .contact-link:hover{border-color:#0d6e4e;color:#6ee7c0;background:#1a2a23}
@@ -157,6 +157,89 @@ footer p{font-size:.8rem;color:#555}
 .fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
+/* ── ENHANCED HOVER EFFECTS ─────────────────────────────────────── */
+
+/* Nav links — underline slide-in */
+.nav-links a{position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--accent);border-radius:2px;transition:width .25s ease}
+.nav-links a:hover::after{width:100%}
+
+/* Hero tag pulse on hover */
+.hero-tag{transition:background .2s,transform .2s,box-shadow .2s}
+.hero-tag:hover{background:var(--accent);color:#fff;transform:translateY(-1px);box-shadow:0 4px 14px rgba(13,110,78,.25)}
+
+/* Stat cards */
+.stat{transition:background .2s,transform .2s}
+.stat:hover{background:var(--accent2);transform:translateY(-2px)}
+.stat:hover .stat-num{color:var(--accent)}
+
+/* Floating cards in hero */
+.card-float{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.card-float:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(13,110,78,.12);border-color:var(--accent)}
+
+/* Skill cards — lift + accent border */
+.skill-card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.skill-card:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(0,0,0,.1);border-color:var(--accent)}
+.skill-card:hover h3{color:var(--accent)}
+.skill-card h3{transition:color .2s}
+
+/* Skill tags — pop on hover */
+.skill-tag{transition:background .2s,color .2s,transform .15s}
+.skill-tag:hover{background:var(--accent);color:#fff;transform:scale(1.05);cursor:default}
+
+/* Project cards — stronger lift + green bar reveal already exists, enhance */
+.project-card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(0,0,0,.11);border-color:var(--accent)}
+.project-card:hover h3{color:var(--accent)}
+.project-card h3{transition:color .2s}
+
+/* Project pills on hover */
+.pill{transition:background .2s,color .2s,transform .15s}
+.pill:hover{background:var(--accent2);color:var(--accent);transform:scale(1.05);cursor:default}
+
+/* Project link arrow slide */
+.project-link{transition:gap .2s,color .2s,letter-spacing .2s}
+.project-link:hover{gap:.6rem;text-decoration:none;letter-spacing:.01em}
+.project-link::after{content:'→';margin-left:0;transition:margin-left .2s}
+
+/* Test doc cards */
+.fade-up[style*="background:var(--card)"]{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease !important}
+.fade-up[style*="background:var(--card)"]:hover{transform:translateY(-5px) !important;box-shadow:0 14px 32px rgba(0,0,0,.1) !important;border-color:var(--accent) !important}
+
+/* Experience list items */
+.exp-list li{transition:color .2s,padding-left .2s}
+.exp-list li:hover{color:var(--text);padding-left:1.4rem}
+.exp-list li::before{transition:transform .2s}
+.exp-list li:hover::before{transform:translateX(3px)}
+
+/* Cert cards */
+.cert-card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.cert-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(13,110,78,.12);border-color:var(--accent)}
+.cert-card:hover .cert-name{color:var(--accent)}
+.cert-name{transition:color .2s}
+.cert-icon{transition:transform .25s ease,background .2s}
+.cert-card:hover .cert-icon{transform:scale(1.1) rotate(-4deg);background:var(--accent);color:#fff}
+
+/* Contact links */
+.contact-link{transition:all .25s ease}
+.contact-link:hover{transform:translateX(6px);border-color:#0d6e4e;color:#6ee7c0;background:#1a2a23}
+.contact-link-icon{transition:transform .25s ease}
+.contact-link:hover .contact-link-icon{transform:scale(1.2)}
+
+/* Buttons */
+.btn-primary{transition:opacity .2s,transform .2s,box-shadow .2s}
+.btn-primary:hover{opacity:1;transform:translateY(-2px);box-shadow:0 8px 20px rgba(13,110,78,.35)}
+.btn-outline{transition:border-color .2s,color .2s,transform .2s,background .2s}
+.btn-outline:hover{background:var(--accent2)}
+
+/* Section titles — subtle accent on hover */
+.section-title{transition:color .2s}
+.section-title:hover{color:var(--accent)}
+
+/* Footer text */
+footer p{transition:color .2s}
+footer:hover p{color:#888}
+
 @media(max-width:768px){
   .hero-inner{grid-template-columns:1fr}
   .hero-visual{display:none}
@@ -176,7 +259,6 @@ footer p{font-size:.8rem;color:#555}
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="#">Usman<span>.</span></a>
     <ul class="nav-links">
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -185,7 +267,6 @@ footer p{font-size:.8rem;color:#555}
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a class="nav-cta" href="#contact">Hire Me</a>
   </div>
 </nav>
 
@@ -195,7 +276,7 @@ footer p{font-size:.8rem;color:#555}
     <div>
       <div class="hero-tag">Available for opportunities</div>
       <h1>Usman Tahir<br/><em>QA Engineer</em></h1>
-      <p class="hero-desc">Ensuring software quality through rigorous manual and automated testing. I find bugs before your users do — turning complex systems into reliable, user-ready products.</p>
+      <p class="hero-desc">QA Engineer with 2+ years of experience in manual testing for web applications, REST APIs, and booking/e-commerce platforms. Skilled in test case design, bug tracking, regression testing, API validation using Postman/Swagger, and SQL data verification. Recently worked on a live hotel booking platform, StayGo Hotel, focusing on payment gateway and booking flow testing to ensure smooth and reliable user transactions. Strong team player with experience in Agile/Scrum environments and a focus on delivering high quality software.</p>
       <div class="hero-btns">
         <a class="btn btn-primary" href="#projects">View My Work</a>
         <a class="btn btn-outline" href="#contact">Get in Touch</a>
@@ -263,7 +344,6 @@ footer p{font-size:.8rem;color:#555}
     </div>
     <div class="skills-grid">
       <div class="skill-card fade-up">
-        <div class="skill-icon">🧪</div>
         <h3>Manual Testing</h3>
         <div class="skill-items">
           <span class="skill-tag">Functional Testing</span>
@@ -275,7 +355,6 @@ footer p{font-size:.8rem;color:#555}
         </div>
       </div>
       <div class="skill-card fade-up">
-        <div class="skill-icon">🤖</div>
         <h3>Test Automation</h3>
         <div class="skill-items">
           <span class="skill-tag">Selenium WebDriver</span>
@@ -287,7 +366,6 @@ footer p{font-size:.8rem;color:#555}
         </div>
       </div>
       <div class="skill-card fade-up">
-        <div class="skill-icon">🔗</div>
         <h3>API Testing</h3>
         <div class="skill-items">
           <span class="skill-tag">Postman</span>
@@ -298,7 +376,6 @@ footer p{font-size:.8rem;color:#555}
         </div>
       </div>
       <div class="skill-card fade-up">
-        <div class="skill-icon">⚡</div>
         <h3>Performance Testing</h3>
         <div class="skill-items">
           <span class="skill-tag">JMeter</span>
@@ -308,7 +385,6 @@ footer p{font-size:.8rem;color:#555}
         </div>
       </div>
       <div class="skill-card fade-up">
-        <div class="skill-icon">🛠</div>
         <h3>Tools & Project Management</h3>
         <div class="skill-items">
           <span class="skill-tag">JIRA</span>
@@ -320,7 +396,6 @@ footer p{font-size:.8rem;color:#555}
         </div>
       </div>
       <div class="skill-card fade-up">
-        <div class="skill-icon">💻</div>
         <h3>Programming</h3>
         <div class="skill-items">
           <span class="skill-tag">Python</span>
@@ -344,7 +419,7 @@ footer p{font-size:.8rem;color:#555}
     </div>
     <div class="projects-grid">
       <div class="project-card fade-up">
-        <div class="project-num">01</div>
+        
         <div class="project-type">Manual Testing · Travel & Hospitality</div>
         <h3>StayGo Hotel Portal — End-to-End QA</h3>
         <p>Tested the full booking lifecycle of a hotel & group event platform. Uncovered a critical payment bug where 25% deposit selection incorrectly charged 100% of the amount (THB 25,000 instead of THB 6,250), plus financial miscalculations in the Admin booking breakdown view.</p>
@@ -359,7 +434,7 @@ footer p{font-size:.8rem;color:#555}
         <a class="project-link" href="https://github.com/usmantahir6/staygo-qa-testing" target="_blank" style="margin-top:.8rem;display:inline-flex">View Bug Reports on GitHub →</a>
       </div>
       <div class="project-card fade-up">
-        <div class="project-num">02</div>
+        
         <div class="project-type">Manual Testing · HR & Payroll</div>
         <h3>DEVOX HRIS — Payroll & Attendance QA</h3>
         <p>Comprehensive testing of a Human Resource Information System covering payroll calculation, geofencing-based attendance, salary slip accuracy, and employee lifecycle management. Found a critical security bug where deleted and inactive employees could still log into the system.</p>
@@ -374,7 +449,7 @@ footer p{font-size:.8rem;color:#555}
         <a class="project-link" href="https://github.com/usmantahir6/devox-hris-qa-testing" target="_blank" style="margin-top:.8rem;display:inline-flex">View Bug Reports on GitHub →</a>
       </div>
       <div class="project-card fade-up">
-        <div class="project-num">03</div>
+        
         <div class="project-type">Payment & Financial Testing</div>
         <h3>StayGo — Payment Flow Deep Dive</h3>
         <p>In-depth negative testing of the partial payment (25% deposit) feature. Documented exact reproduction steps, expected vs actual results, and attached Loom video evidence. Covered both user-facing payment and admin-side financial breakdown accuracy.</p>
@@ -384,7 +459,7 @@ footer p{font-size:.8rem;color:#555}
         <a class="project-link" href="https://www.loom.com/share/faf0300c8c40417e8d8f183f824c6b4b" target="_blank" style="margin-top:.8rem;display:inline-flex">Watch Bug Video →</a>
       </div>
       <div class="project-card fade-up">
-        <div class="project-num">04</div>
+        
         <div class="project-type">Security & Access Control Testing</div>
         <h3>DEVOX HRIS — Authentication Security Bugs</h3>
         <p>Discovered that both inactive and deleted employees retained full login access — a critical security vulnerability. Tested two complete scenarios with step-by-step reproduction and documented expected authentication error messages for dev team.</p>
@@ -394,7 +469,7 @@ footer p{font-size:.8rem;color:#555}
         <a class="project-link" href="https://github.com/usmantahir6/devox-hris-qa-testing" target="_blank" style="margin-top:.8rem;display:inline-flex">View on GitHub →</a>
       </div>
       <div class="project-card fade-up">
-        <div class="project-num">05</div>
+        
         <div class="project-type">Payroll Logic Testing</div>
         <h3>DEVOX — Payroll Calculation Accuracy Testing</h3>
         <p>Executed negative test scenarios on part-time hourly payroll where undefined project rates caused hour count mismatches. Also identified missing hours data on salary slips, making payroll unverifiable for employees and admins.</p>
@@ -404,7 +479,7 @@ footer p{font-size:.8rem;color:#555}
         <a class="project-link" href="https://github.com/usmantahir6/devox-hris-qa-testing" target="_blank" style="margin-top:.8rem;display:inline-flex">View on GitHub →</a>
       </div>
       <div class="project-card fade-up">
-        <div class="project-num">06</div>
+        
         <div class="project-type">Attendance & UI Testing</div>
         <h3>DEVOX — Attendance & StayGo Mobile Responsiveness</h3>
         <p>Identified geofencing failure causing office check-ins to be flagged as remote work. Also found auto check-out not triggering at 5 AM, leaving attendance records blank. Separately documented mobile UI layout issues on StayGo's Super Admin dashboard.</p>
@@ -429,43 +504,36 @@ footer p{font-size:.8rem;color:#555}
 
       <!-- Doc 1 -->
       <div class="fade-up" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden">
-        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem">
-          <div style="width:48px;height:48px;border-radius:12px;background:#e8f0fe;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">📋</div>
-          <div>
-            <div style="font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.2rem">Test Cases · DEVOX HRIS</div>
+        <div style="margin-bottom:1.2rem">
+            <div style="font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.4rem">Test Cases · DEVOX HRIS</div>
             <div style="font-size:1rem;font-weight:600;line-height:1.3">DEVOX HRIS — Payroll & Attendance Test Cases</div>
-          </div>
         </div>
         <p style="font-size:.875rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem">Detailed test cases for the DEVOX HR & Payroll system. Covers payroll calculation, geofencing-based attendance check-in, salary slip accuracy, employee lifecycle management, and authentication security flows.</p>
         <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem">
           <span class="pill">Test Cases</span><span class="pill">JIRA</span><span class="pill">ClickUp</span><span class="pill">Manual Testing</span>
         </div>
         <div style="display:flex;gap:1rem;flex-wrap:wrap">
-          <a href="https://docs.google.com/document/d/1uOJBJvnj3j4GeKSj12So5ouYxG5OZmRZsIgrjaCdPWk/edit?tab=t.a71483g7jz88" target="_blank" style="font-size:.82rem;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem">View Test Cases →</a>
+          <a href="https://docs.google.com/document/d/17b34QC08MmE_dEaJyYMaF3PtIe6ItD-o6ZHm_gGZVQQ/view" target="_blank" style="font-size:.82rem;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem">View Test Cases →</a>
         </div>
       </div>
 
       <!-- Doc 2 -->
       <div class="fade-up" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden">
-        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem">
-          <div style="width:48px;height:48px;border-radius:12px;background:#e8f5f0;display:flex;align-items:center;justify-content:circle;font-size:1.4rem;flex-shrink:0;justify-content:center">🧾</div>
-          <div>
-            <div style="font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.2rem">Test Plan · JAI THAI / StayGo</div>
+        <div style="margin-bottom:1.2rem">
+            <div style="font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:.4rem">Test Plan · JAI THAI / StayGo</div>
             <div style="font-size:1rem;font-weight:600;line-height:1.3">Tour Operator Dashboard — QA Test Plan</div>
-          </div>
         </div>
         <p style="font-size:.875rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem">QA Test Plan for the JAI THAI Tour Operator Dashboard — validating replacement of hotel-based logic with tour/operator functionality. Covers access control, data behavior, functional integrity, and regression testing across all modules.</p>
         <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem">
           <span class="pill">Test Plan</span><span class="pill">Tour Operator</span><span class="pill">Access Control</span><span class="pill">Regression</span>
         </div>
         <div style="display:flex;gap:1rem;flex-wrap:wrap">
-          <a href="https://docs.google.com/document/d/1ZiDkO0ciiPg-3q0LQTvCVp_9FrHTMhGuuTcg6Vw7NR0/edit?tab=t.c8p749ekjcph#heading=h.1xeh28tr77b0" target="_blank" style="font-size:.82rem;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem">View Test Plan →</a>
+          <a href="https://docs.google.com/document/d/1M7pf5SzgPPAcVn_-UD99ppiNF0wG66r_O1-vKkYhmy8/view" target="_blank" style="font-size:.82rem;font-weight:600;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem">View Test Plan →</a>
         </div>
       </div>
 
       <!-- Summary Card -->
       <div class="fade-up" style="background:var(--accent);border-radius:16px;padding:2rem;color:#fff">
-        <div style="font-size:1.5rem;margin-bottom:1rem">📊</div>
         <div style="font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#6ee7c0;margin-bottom:.5rem">Documentation Stats</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
           <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:1rem;text-align:center">
@@ -528,15 +596,13 @@ footer p{font-size:.8rem;color:#555}
     <div class="section-head fade-up">
       <div class="section-label">Credentials</div>
       <h2 class="section-title">Certifications & Education</h2>
-      <p class="section-sub">Continuous learning through recognized certifications in software quality and testing.</p>
+      <p class="section-sub">Continuously improving testing skills through industry recognized QA certifications.</p>
     </div>
     <div class="certs-grid fade-up">
       <div class="cert-card">
-        <div class="cert-icon">📈</div>
         <div><div class="cert-name">Digital Marketing</div><div class="cert-issuer">IDM Pakistan</div></div>
       </div>
       <div class="cert-card">
-        <div class="cert-icon">🤖</div>
         <div><div class="cert-name">Software Testing Using Cypress</div><div class="cert-issuer">Cursa</div></div>
       </div>
     </div>
@@ -550,8 +616,11 @@ footer p{font-size:.8rem;color:#555}
       <div>
         <div class="section-label">Get In Touch</div>
         <h2 class="section-title">Let's Work Together</h2>
-        <p class="section-sub">Open to full-time roles, contract projects, and freelance QA work. Let's talk about how I can help your team ship quality software.</p>
+        <p class="section-sub">Open to full time, contract, and freelance QA opportunities, and always excited to help teams deliver reliable, high quality software.</p>
         <div class="contact-links">
+                    <a class="contact-link" href="https://wa.me/923214051090" target="_blank">
+            <span class="contact-link-icon">💬</span> WhatsApp: +92 321 4051090
+          </a>
           <a class="contact-link" href="mailto:usman.tahir6@gmail.com">
             <span class="contact-link-icon">✉</span> usman.tahir6@gmail.com
           </a>
@@ -561,28 +630,12 @@ footer p{font-size:.8rem;color:#555}
           <a class="contact-link" href="https://github.com/usmantahir6" target="_blank">
             <span class="contact-link-icon">⌥</span> github.com/usmantahir6
           </a>
-          <a class="contact-link" href="resume-usman-tahir.pdf" download>
+          <a class="contact-link" href="Usman Tahir (QA-Engineer) CV.docx" download>
             <span class="contact-link-icon">↓</span> Download Resume
           </a>
         </div>
       </div>
-      <div>
-        <div class="contact-form">
-          <div class="form-group">
-            <label class="form-label">Your Name</label>
-            <input class="form-input" type="text" placeholder="John Smith"/>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Email Address</label>
-            <input class="form-input" type="email" placeholder="john@company.com"/>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Message</label>
-            <textarea class="form-input" placeholder="Tell me about the role or project..."></textarea>
-          </div>
-          <button class="btn-send" onclick="alert('Message sent! Usman will get back to you soon.')">Send Message →</button>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>
